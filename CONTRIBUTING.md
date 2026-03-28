@@ -1,42 +1,187 @@
-# Contributing to pi
+# Contributing to Constraint Theory Implementation Agent
 
-Thanks for wanting to contribute! This guide exists to save both of us time.
+Thank you for your interest in contributing! This document provides guidelines and instructions for contributing.
 
-## The One Rule
+## Table of Contents
 
-**You must understand your code.** If you can't explain what your changes do and how they interact with the rest of the system, your PR will be closed.
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+- [Development Setup](#development-setup)
+- [Making Changes](#making-changes)
+- [Testing](#testing)
+- [Pull Request Process](#pull-request-process)
+- [Style Guidelines](#style-guidelines)
 
-Using AI to write code is fine. You can gain understanding by interrogating an agent with access to the codebase until you grasp all edge cases and effects of your changes. What's not fine is submitting agent-generated slop without that understanding.
+## Code of Conduct
 
-If you use an agent, run it from the `pi-mono` root directory so it picks up `AGENTS.md` automatically. Your agent must follow the rules and guidelines in that file.
+This project follows the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). By participating, you are expected to uphold this code.
 
-## First-Time Contributors
+## Getting Started
 
-We use an approval gate for new contributors:
+1. Fork the repository
+2. Clone your fork: `git clone https://github.com/YOUR_USERNAME/constraint-theory-agent.git`
+3. Create a branch: `git checkout -b feature/my-feature`
 
-1. Open an issue describing what you want to change and why
-2. Keep it concise (if it doesn't fit on one screen, it's too long)
-3. Write in your own voice, at least for the intro
-4. A maintainer will comment `lgtm` if approved
-5. Once approved, you can submit PRs
+## Development Setup
 
-This exists because AI makes it trivial to generate plausible-looking but low-quality contributions. The issue step lets us filter early.
+### Prerequisites
 
-## Before Submitting a PR
+- Node.js 18+ (20 recommended)
+- npm 9+
+- TypeScript 5+
+
+### Installation
 
 ```bash
-npm run check  # must pass with no errors
-./test.sh      # must pass
+# Clone your fork
+git clone https://github.com/YOUR_USERNAME/constraint-theory-agent.git
+cd constraint-theory-agent
+
+# Install dependencies
+npm install
+
+# Build the project
+npm run build
+
+# Verify installation
+npm test
 ```
 
-Do not edit `CHANGELOG.md`. Changelog entries are added by maintainers.
+### Project Structure
 
-If you're adding a new provider to `packages/ai`, see `AGENTS.md` for required tests.
+```
+constraint-theory-agent/
+├── packages/
+│   ├── core/           # Core agent logic
+│   ├── analyzer/       # Code analysis engine
+│   ├── refactorer/     # Code transformation engine
+│   ├── explainer/      # Human-readable explanations
+│   └── cli/            # Command-line interface
+├── prompts/
+│   ├── audit.md        # Code audit prompt
+│   ├── refactor.md     # Refactoring prompt
+│   └── explain.md      # Explanation prompt
+├── extensions/
+│   ├── typescript/     # TypeScript-specific patterns
+│   ├── python/         # Python-specific patterns
+│   ├── rust/           # Rust-specific patterns
+│   └── cpp/            # C++-specific patterns
+└── templates/
+    ├── game-dev/       # Game dev refactoring templates
+    ├── scientific/     # Scientific computing templates
+    └── cad/            # CAD/engineering templates
+```
 
-## Philosophy
+## Making Changes
 
-pi's core is minimal. If your feature doesn't belong in the core, it should be an extension. PRs that bloat the core will likely be rejected.
+### Branch Naming
+
+- `feature/` - New features
+- `fix/` - Bug fixes
+- `docs/` - Documentation changes
+- `refactor/` - Code refactoring
+- `test/` - Adding or modifying tests
+
+### Commit Messages
+
+Follow conventional commits:
+
+```
+feat: add new floating-point pattern detector
+fix: correct analysis of NaN comparisons
+docs: update installation instructions
+test: add tests for IEEE 754 edge cases
+refactor: simplify pattern matching logic
+```
+
+## Testing
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run specific test file
+npm test -- packages/analyzer/tests/drift-detector.test.ts
+```
+
+### Writing Tests
+
+- Place tests in the `tests/` directory alongside source files
+- Name test files with `.test.ts` suffix
+- Use descriptive test function names
+
+```typescript
+describe('FloatingPointDetector', () => {
+  it('should detect cumulative error in loop', () => {
+    const code = `
+      for (let i = 0; i < 1000; i++) {
+        total += 0.1;
+      }
+    `;
+    const issues = detector.analyze(code);
+    expect(issues).toContainEqual(
+      expect.objectContaining({ type: 'cumulative-error' })
+    );
+  });
+});
+```
+
+## Pull Request Process
+
+1. **Update Documentation**: Ensure README.md and JSDoc comments are updated
+2. **Add Tests**: New features need tests
+3. **Run Tests**: All tests must pass
+4. **Check Examples**: Ensure example scripts still work
+5. **Submit PR**: Use the PR template
+
+### PR Checklist
+
+- [ ] Code follows style guidelines
+- [ ] Self-review completed
+- [ ] Comments added for complex logic
+- [ ] Documentation updated
+- [ ] Tests added and passing
+- [ ] No new warnings introduced
+
+## Style Guidelines
+
+### TypeScript Code
+
+- Follow strict mode
+- Use type hints for all function parameters and returns
+- Write JSDoc comments for public APIs
+
+```typescript
+/**
+ * Analyzes code for floating-point drift patterns.
+ * 
+ * @param code - The source code to analyze
+ * @param options - Analysis options
+ * @returns Array of detected issues with locations
+ */
+function analyzeDriftPatterns(
+  code: string,
+  options: AnalysisOptions
+): DriftIssue[] {
+  // Implementation
+}
+```
+
+### Adding New Pattern Detectors
+
+1. Create detector in `packages/analyzer/patterns/`
+2. Add corresponding tests
+3. Register in `packages/analyzer/index.ts`
+4. Add documentation in README.md
 
 ## Questions?
 
-Open an issue or ask on [Discord](https://discord.com/invite/nKXTsAcmbT).
+- Open a [Discussion](https://github.com/SuperInstance/constraint-theory-agent/discussions)
+- Check existing [Issues](https://github.com/SuperInstance/constraint-theory-agent/issues)
+
+Thank you for contributing!

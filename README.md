@@ -2,10 +2,13 @@
 
 > **The killer app that makes Constraint Theory actionable. Audits your code, finds where exact methods win, refactors with expert explanations.**
 
+[![GitHub stars](https://img.shields.io/github/stars/SuperInstance/constraint-theory-agent?style=social)](https://github.com/SuperInstance/constraint-theory-agent)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub](https://img.shields.io/badge/GitHub-SuperInstance%2Fconstraint--theory--agent-blue)](https://github.com/SuperInstance/constraint-theory-agent)
+[![npm version](https://badge.fury.io/js/@constraint-theory%2Fagent.svg)](https://www.npmjs.com/package/@constraint-theory/agent)
+[![CI](https://github.com/SuperInstance/constraint-theory-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/SuperInstance/constraint-theory-agent/actions/workflows/ci.yml)
+[![Node.js](https://img.shields.io/node/v/@constraint-theory/agent)](https://www.npmjs.com/package/@constraint-theory/agent)
 
-🌐 **Live Agent:** [constraint-theory-web.pages.dev/agent](https://constraint-theory-web.pages.dev/agent)
+🌐 **Live Agent:** [constraint-theory-web.pages.dev/agent](https://constraint-theory-web.pages.dev/agent) · 📦 **npm:** `npm install -g @constraint-theory/agent`
 
 ---
 
@@ -58,6 +61,8 @@ Agent: [Generates PR with refactored code, tests, and explanations]
 
 ## Quick Start (30 Seconds)
 
+**Prerequisites:** Node.js 18+, npm 9+
+
 ### Option 1: CLI Agent (Recommended)
 
 ```bash
@@ -69,6 +74,34 @@ ct-agent audit ./my-project
 
 # Interactive mode
 ct-agent chat
+```
+
+**Troubleshooting:**
+```bash
+# Permission issues on macOS/Linux?
+sudo npm install -g @constraint-theory/agent
+
+# Node version too old?
+nvm install 18
+nvm use 18
+
+# Port already in use for chat server?
+ct-agent chat --port 3001
+
+# Clear cache if having issues
+ct-agent cache clear
+```
+
+**Verify installation:**
+```bash
+ct-agent --version
+# Output: @constraint-theory/agent v1.0.0
+
+ct-agent doctor
+# ✓ Node.js 18+ installed
+# ✓ npm 9+ installed
+# ✓ Agent models available
+# ✓ Ready to audit!
 ```
 
 ### Option 2: Use in Your Code
@@ -317,18 +350,66 @@ constraint-theory-agent/
 
 ---
 
-## Ecosystem
+## 🌟 Ecosystem
 
-| Repo | What It Does |
-|------|--------------|
-| **[constraint-theory-core](https://github.com/SuperInstance/constraint-theory-core)** | Rust crate - exact arithmetic |
-| **[constraint-theory-python](https://github.com/SuperInstance/constraint-theory-python)** | Python bindings |
-| **[constraint-theory-agent](https://github.com/SuperInstance/constraint-theory-agent)** | This repo - Implementation agent |
-| **[constraint-ranch](https://github.com/SuperInstance/constraint-ranch)** | Gamified learning |
-| **[constraint-flow](https://github.com/SuperInstance/constraint-flow)** | Business automation |
+| Repo | What It Does | Key Features |
+|------|--------------|--------------|
+| **[constraint-theory-core](https://github.com/SuperInstance/constraint-theory-core)** | 🦀 Rust crate | ~100ns snap, SIMD batch, 82 tests |
+| **[constraint-theory-python](https://github.com/SuperInstance/constraint-theory-python)** | 🐍 Python bindings | NumPy integration, PyTorch compatible |
+| **[constraint-theory-web](https://github.com/SuperInstance/constraint-theory-web)** | 🌐 Interactive demos | 50 visualizations, zero setup |
+| **[constraint-theory-research](https://github.com/SuperInstance/constraint-theory-research)** | 📚 Mathematical foundations | arXiv paper, proofs, open problems |
+| **[constraint-ranch](https://github.com/SuperInstance/constraint-ranch)** | 🎮 Gamified learning | Puzzle games, agent breeding |
+| **[constraint-flow](https://github.com/SuperInstance/constraint-flow)** | 💼 Business automation | Exact financial calculations, workflow orchestration |
+| **[constraint-theory-agent](https://github.com/SuperInstance/constraint-theory-agent)** | 🤖 This repo | Code audit, refactoring, expert explanations |
+
+### How They Work Together
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                     CONSTRAINT THEORY ECOSYSTEM                      │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│  constraint-theory-core (Rust)                                       │
+│       │                                                              │
+│       │ Exact arithmetic, Pythagorean snapping                       │
+│       ▼                                                              │
+│  ┌────────────────────────────────────────────────────────────┐     │
+│  │                 constraint-theory-agent                     │     │
+│  │     Audits code, identifies opportunities, refactors       │     │
+│  └────────────────────────────────────────────────────────────┘     │
+│       │                                                              │
+│       ├─────────────────┬─────────────────┬─────────────────┐       │
+│       ▼                 ▼                 ▼                 ▼       │
+│  constraint-       constraint-       constraint-       constraint-  │
+│  theory-python     theory-web        ranch             flow         │
+│  (ML/Science)      (Education)       (Training)        (Business)   │
+│                                                                      │
+└─────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
-## License
+## 🤝 Contributing
+
+**[Good First Issues](https://github.com/SuperInstance/constraint-theory-agent/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)** · **[CONTRIBUTING.md](CONTRIBUTING.md)**
+
+Contributions welcome:
+
+- 🔍 **New Pattern Detectors** - Add detection for more floating-point issues
+- 🌍 **Language Support** - Add Go, Julia, or other language extensions
+- 📚 **Documentation** - Improve explanations, add tutorials
+- 🧪 **Test Coverage** - Add edge cases, integration tests
+
+```bash
+git clone https://github.com/SuperInstance/constraint-theory-agent.git
+cd constraint-theory-agent
+npm install
+npm run build
+npm test
+```
+
+---
+
+## 📜 License
 
 MIT — see [LICENSE](LICENSE).
