@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-SuperInstance%2Fconstraint--theory--agent-blue)](https://github.com/SuperInstance/constraint-theory-agent)
 
-🌐 **Live Agent:** [constraint-theory.superinstance.ai/agent](https://constraint-theory.superinstance.ai/agent)
+🌐 **Live Agent:** [constraint-theory-web.pages.dev/agent](https://constraint-theory-web.pages.dev/agent)
 
 ---
 
